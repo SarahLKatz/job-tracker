@@ -19,3 +19,37 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+thead {
+  font-weight: bold;
+}
+
+td {
+  margin-right: 4vw;
+  padding: 0.5vw;
+}
+
+/* Companies Page */
+.company-list h3,
+.activity-list h3 {
+  color: darkblue;
+}
+
+.company-list td,
+.activity-list td {
+  border: 1px solid black;
+}
+
+.add-new {
+  display: inline-block;
+  font-size: 1.1rem;
+  margin-top: 3vh;
+}
+
+.activity-list .date {
+  min-width: 8vw;
+}
+
+.activity-list .type {
+  min-width: 15vw;
+}

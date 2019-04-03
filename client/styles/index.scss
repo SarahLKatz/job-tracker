@@ -1,0 +1,93 @@
+body {
+  font-family: sans-serif;
+
+  a {
+    text-decoration: none;
+  }
+
+  label {
+    display: block;
+  }
+
+  .container {
+    border: 1px solid #dddddd;
+    padding: 2%;
+  }
+
+  .main-content {
+    background-color: #eee;
+  }
+
+  nav {
+    a {
+      display: inline-block;
+      margin: 0.25em 1em;
+      color: #ccc;
+    }
+  }
+
+  .nav-top {
+    font-size: 2.5vh;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .auth-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  form div {
+    display: inline-block;
+
+    .add-race {
+      .comments {
+        display: block;
+        width: 100vw;
+        color: red;
+      }
+    }
+  }
+
+  .allRaces {
+    padding: 1%;
+    font-weight: bold;
+
+    .allRaces-race {
+      font-size: 1em;
+      font-weight: normal;
+    }
+  }
+
+  .apis {
+    height: 5vh;
+    text-align: center;
+    margin: 1%;
+
+    img {
+      height: 100%;
+      padding-right: 3%;
+    }
+
+    span {
+      height: 100%;
+      padding-right: 3%;
+      font-size: 1em;
+    }
+  }
+
+  .oaths {
+  }
+
+  .time-select {
+    margin-right: 0.2em;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .add-race {
+    .comments {
+      display: inline;
+      margin-left: 1%;
+    }
+  }
+}

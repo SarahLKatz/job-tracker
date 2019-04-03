@@ -1,5 +1,7 @@
 const isDev = process.env.NODE_ENV === 'development'
 
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 module.exports = {
   mode: isDev ? 'development' : 'production',
   entry: [
@@ -11,7 +13,7 @@ module.exports = {
     filename: './public/bundle.js'
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.css']
   },
   devtool: 'source-map',
   watchOptions: {
@@ -23,6 +25,10 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
+      },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   }

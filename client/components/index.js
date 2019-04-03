@@ -5,4 +5,7 @@
  */
 export {default as Navbar} from './navbar'
 export {default as UserHome} from './user-home'
-export {Login, Signup} from './auth-form'
+export {default as Companies} from './companies'
+export {default as JobDetail} from './job-detail'
+export {default as AddJob} from './add-job'
+export {default as AddDetail} from './add-detail'

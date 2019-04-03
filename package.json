@@ -1,7 +1,7 @@
 {
-  "name": "boilermaker",
+  "name": "job-tracker",
   "version": "1.0.0",
-  "description": "Some boilerplate code to get you started - get shakin'!",
+  "description": "A simple CRUD app to track job search activity",
   "engines": {
     "node": ">= 7.0.0"
   },
@@ -34,9 +34,11 @@
       "git add"
     ]
   },
-  "author": "Fullstack Academy of Code",
+  "author": "Sarah Katz",
   "license": "MIT",
   "dependencies": {
+    "@emotion/babel-preset-css-prop": "^10.0.9",
+    "@emotion/core": "^10.0.9",
     "axios": "^0.15.3",
     "compression": "^1.7.3",
     "connect-session-sequelize": "^4.1.0",
@@ -51,11 +53,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-redux": "^5.0.2",
     "react-router-dom": "^4.3.1",
-    "redux": "^3.6.0",
-    "redux-logger": "^2.8.1",
-    "redux-thunk": "^2.3.0",
     "sequelize": "^4.38.0",
     "socket.io": "^2.1.1"
   },
@@ -78,21 +76,24 @@
     "babel-eslint": "^8.2.6",
     "babel-loader": "^8.0.0-beta.4",
     "chai": "^3.5.0",
+    "css-loader": "^2.1.1",
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "^1.0.0",
     "eslint": "^4.19.1",
     "eslint-config-fullstack": "^5.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-react": "^7.10.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.2.0",
     "mocha": "^5.2.0",
+    "node-sass": "^4.11.0",
     "nodemon": "^1.18.3",
     "npm-merge-driver": "^2.3.5",
     "prettier": "1.11.1",
     "react-test-renderer": "^16.4.2",
-    "redux-devtools-extension": "^2.13.5",
-    "redux-mock-store": "^1.5.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
     "supertest": "^3.1.0",
     "webpack": "^4.16.4",
     "webpack-cli": "^3.1.0"
