@@ -9,9 +9,9 @@ const Navbar = props => (
     <nav>
       <div>
         <Link to="/">All Companies</Link>
-        {props.companies.map(({name, id}) => (
+        {/* props.companies.map(({name, id}) => (
           <Link to={`/activity/${id}`}>{name}</Link>
-        ))}
+        ))*/}
       </div>
     </nav>
     <hr />

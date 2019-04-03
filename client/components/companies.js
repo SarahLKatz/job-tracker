@@ -13,7 +13,7 @@ const Companies = ({companies, active}) => {
     } else {
       setCompanies(companies)
     }
-  }, active)
+  })
 
   const fetchInactiveCompanies = async () => {
     const results = await axios.get(`/api/companies/inactive`)

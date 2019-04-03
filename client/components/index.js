@@ -4,7 +4,6 @@
  * having to figure out which file they belong to!
  */
 export {default as Navbar} from './navbar'
-export {default as UserHome} from './user-home'
 export {default as Companies} from './companies'
 export {default as JobDetail} from './job-detail'
 export {default as AddJob} from './add-job'
