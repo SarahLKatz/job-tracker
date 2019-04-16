@@ -9,9 +9,12 @@ const JobDetail = ({match, name}) => {
   const [details, setDetails] = useState(initialDetails)
   const [company, setCompany] = useState({})
 
-  useEffect(() => {
-    fetchDetails()
-  }, details.length)
+  useEffect(
+    () => {
+      fetchDetails()
+    },
+    [companyId]
+  )
 
   const fetchDetails = async () => {
     const result = await axios.get(`/api/companies/${companyId}/details`)

@@ -3,17 +3,19 @@ import {Link} from 'react-router-dom'
 import {css} from '@emotion/core'
 import axios from 'axios'
 
-const Companies = ({companies, active}) => {
+const Companies = ({companies, fetchCompanies, active}) => {
   const [companyList, setCompanies] = useState([])
-  let fetchMe = false
 
-  useEffect(() => {
-    if (!companies && !active) {
-      fetchInactiveCompanies()
-    } else {
-      setCompanies(companies)
-    }
-  })
+  useEffect(
+    () => {
+      if (!companies && !active) {
+        fetchInactiveCompanies()
+      } else {
+        setCompanies(companies)
+      }
+    },
+    [active]
+  )
 
   const fetchInactiveCompanies = async () => {
     const results = await axios.get(`/api/companies/inactive`)
@@ -21,7 +23,6 @@ const Companies = ({companies, active}) => {
     setCompanies(results.data)
   }
 
-  // Add a function to archive company
   const archiveCompany = async companyId => {
     await axios
       .put(`/api/companies/${companyId}/inactive`)
@@ -31,7 +32,7 @@ const Companies = ({companies, active}) => {
 
   return (
     <div className="company-list">
-      <h3>Company List</h3>
+      <h3>{!active ? 'Inactive' : ''} Company List</h3>
       <table>
         <thead>
           <tr>
@@ -52,7 +53,9 @@ const Companies = ({companies, active}) => {
                   <a href={company.website}>{company.website}</a>
                 </td>
                 <td>
-                  <Link to={`activity/${company.id}`}>View Activity</Link>
+                  <Link className="activity-link" to={`activity/${company.id}`}>
+                    View Activity
+                  </Link>
                 </td>
                 {active && (
                   <td>

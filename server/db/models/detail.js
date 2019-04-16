@@ -25,9 +25,6 @@ const Detail = db.define('detail', {
   notes: {
     type: Sequelize.TEXT,
     allowNull: false
-  },
-  associatedFile: {
-    type: Sequelize.STRING
   }
 })
 

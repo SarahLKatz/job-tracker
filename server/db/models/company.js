@@ -9,7 +9,6 @@ const Company = db.define('company', {
   },
   industry: {
     type: Sequelize.STRING,
-    unique: true,
     allowNull: false
   },
   website: {
