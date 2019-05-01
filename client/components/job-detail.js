@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import {css} from '@emotion/core'
 import axios from 'axios'
+import history from '../history'
 
 const JobDetail = ({match, name}) => {
   const companyId = match.params.companyId
@@ -30,6 +31,13 @@ const JobDetail = ({match, name}) => {
 
   const fetchCompany = async () => {
     const result = await axios.get(`/api/companies/${companyId}/details`)
+  }
+
+  const archiveCompany = async () => {
+    await axios
+      .put(`/api/companies/${companyId}/inactive`)
+      .then(() => history.push('/', {update: true}))
+      .catch(err => console.error(err))
   }
 
   return (
@@ -64,6 +72,9 @@ const JobDetail = ({match, name}) => {
         <Link to={`/activity/${companyId}/add`} className="add-new">
           Add A Job Activity
         </Link>
+      </div>
+      <div>
+        <button onClick={archiveCompany}>Archive Company</button>
       </div>
     </div>
   )

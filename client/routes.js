@@ -9,7 +9,9 @@ import {Navbar, Companies, JobDetail, AddJob, AddDetail} from './components'
  */
 const Routes = props => {
   const [companyList, setCompanies] = useState([])
-  let fetchMe = props.location.pathname.includes('add')
+  let fetchMe =
+    props.location.pathname.includes('add') ||
+    (props.location.state && props.location.state.update)
 
   useEffect(
     () => {
@@ -21,7 +23,7 @@ const Routes = props => {
   const fetchCompanies = async () => {
     const result = await axios.get('/api/companies')
 
-    setCompanies(result.data)
+    await setCompanies(result.data)
   }
 
   return (
@@ -34,13 +36,11 @@ const Routes = props => {
         <Route path="/inactive" render={() => <Companies active={false} />} />
         <Route
           path="/"
-          render={() => (
-            <Companies
-              fetchCompanies={fetchCompanies}
-              companies={companyList}
-              active={true}
-            />
-          )}
+          render={() =>
+            companyList.length && (
+              <Companies companies={companyList} active={true} />
+            )
+          }
         />
       </Switch>
     </div>
