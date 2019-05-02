@@ -1,14 +1,34 @@
-import React, {Component} from 'react'
+import React, {useState, useEffect} from 'react'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Companies, JobDetail, AddJob, AddDetail} from './components'
+import axios from 'axios'
+import {Navbar, Companies, JobDetail, AddJob, AddDetail} from './components'
 
 /**
  * COMPONENT
  */
-class Routes extends Component {
-  render() {
-    return (
+const Routes = props => {
+  const [companyList, setCompanies] = useState([])
+  let fetchMe =
+    props.location.pathname.includes('add') ||
+    (props.location.state && props.location.state.update)
+
+  useEffect(
+    () => {
+      fetchCompanies()
+    },
+    [fetchMe]
+  )
+
+  const fetchCompanies = async () => {
+    const result = await axios.get('/api/companies')
+
+    await setCompanies(result.data)
+  }
+
+  return (
+    <div>
+      <Navbar companies={companyList} />
       <Switch>
         <Route path="/activity/:companyId/add" component={AddDetail} />
         <Route path="/activity/:companyId" component={JobDetail} />
@@ -16,18 +36,15 @@ class Routes extends Component {
         <Route path="/inactive" render={() => <Companies active={false} />} />
         <Route
           path="/"
-          render={() => (
-            <Companies companies={this.props.companies} active={true} />
-          )}
+          render={() =>
+            companyList.length && (
+              <Companies companies={companyList} active={true} />
+            )
+          }
         />
-        {/* 
-        <Route path="/add" component={AddDetail} />
-        <Route path="/companies" component={Companies} />
-        <Route path="/details" component={JobDetail} />
-      */}
       </Switch>
-    )
-  }
+    </div>
+  )
 }
 
 // The `withRouter` wrapper makes sure that updates are not blocked

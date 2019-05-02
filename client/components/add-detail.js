@@ -2,8 +2,8 @@ import React from 'react'
 import history from '../history'
 import axios from 'axios'
 
-const AddDetail = ({match}) => {
-  const companyId = match.params.companyId
+const AddDetail = props => {
+  const companyId = props.match.params.companyId
 
   async function addNewDetail(e) {
     e.preventDefault()
@@ -24,7 +24,7 @@ const AddDetail = ({match}) => {
   }
 
   return (
-    <div>
+    <div className="add">
       <h3>Add A New Job Activity</h3>
 
       <form onSubmit={addNewDetail} name="newjob">
@@ -51,13 +51,9 @@ const AddDetail = ({match}) => {
         </div>
         <div>
           <label htmlFor="notes">Notes</label>
-          <input name="notes" type="text" required />
+          <input name="notes" type="text" id="notes-input" required />
         </div>
-        <div>
-          <label htmlFor="associatedFile">Associated File(s)</label>
-          <input name="associatedFile" type="text" />
-        </div>
-        <button>Add</button>
+        <button>Add Detail</button>
       </form>
     </div>
   )

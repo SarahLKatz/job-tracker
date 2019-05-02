@@ -29,15 +29,53 @@ td {
   padding: 0.5vw;
 }
 
-/* Companies Page */
+/* Navbar */
+.companies-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.company-link {
+  color: darkslategray;
+  font-size: 0.8em;
+}
+
+/* Companies Page & Job Detail Page */
+.company-list,
+.activity-list {
+  margin: 0 15vw;
+  text-align: center;
+}
+
 .company-list h3,
-.activity-list h3 {
-  color: darkblue;
+.activity-list h3,
+.add h3 {
+  color: midnightblue;
+  font-size: 1.25em;
+}
+
+.company-list a,
+.activity-list a {
+  color: midnightblue;
+}
+
+.company-list table,
+.activity-list table {
+  width: 70vw;
+}
+
+.company-list table a {
+  color: mediumslateblue;
+}
+
+.company-list .activity-link {
+  color: slategray;
 }
 
 .company-list td,
 .activity-list td {
   border: 1px solid black;
+  text-align: left;
 }
 
 .add-new {
@@ -52,4 +90,35 @@ td {
 
 .activity-list .type {
   min-width: 15vw;
+}
+
+/* Add Forms */
+.add label {
+  padding-bottom: 0.25vh;
+  margin-bottom: 0.5vh;
+  border-bottom: solid black 1px;
+}
+
+.add input {
+  height: 2.5vh;
+  font-size: 0.75em;
+}
+
+.add select {
+  height: 100%;
+  width: 10vw;
+  font-size: 0.75em;
+}
+
+#notes-input {
+  width: 40vw;
+}
+
+.add button {
+  height: 3vh;
+  min-height: 25px;
+  width: 10vw;
+  border-radius: 1vw;
+  background-color: rgba(119, 136, 153, 0.4);
+  font-size: 0.75em;
 }

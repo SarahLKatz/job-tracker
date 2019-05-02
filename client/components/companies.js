@@ -5,15 +5,17 @@ import axios from 'axios'
 
 const Companies = ({companies, active}) => {
   const [companyList, setCompanies] = useState([])
-  let fetchMe = false
 
-  useEffect(() => {
-    if (!companies && !active) {
-      fetchInactiveCompanies()
-    } else {
-      setCompanies(companies)
-    }
-  })
+  useEffect(
+    () => {
+      if (!companies && !active) {
+        fetchInactiveCompanies()
+      } else {
+        setCompanies(companies)
+      }
+    },
+    [active]
+  )
 
   const fetchInactiveCompanies = async () => {
     const results = await axios.get(`/api/companies/inactive`)
@@ -21,30 +23,30 @@ const Companies = ({companies, active}) => {
     setCompanies(results.data)
   }
 
-  // Add a function to archive company
   const archiveCompany = async companyId => {
     await axios
       .put(`/api/companies/${companyId}/inactive`)
-      .then(() => fetchCompanies())
+      .then(async () => await axios.get('/api/companies'))
+      .then(res => setCompanies(res.data))
       .catch(err => console.error(err))
   }
 
   return (
     <div className="company-list">
-      <h3>Company List</h3>
-      <table>
-        <thead>
-          <tr>
-            <td>Company Name</td>
-            <td>Main Contact Name</td>
-            <td>Website</td>
-            <td>Activity</td>
-            {active && <td>Archive</td>}
-          </tr>
-        </thead>
-        <tbody>
-          {companyList &&
-            companyList.map((company, idx) => (
+      <h3>{!active ? 'Inactive' : ''} Company List</h3>
+      {companyList.length ? (
+        <table>
+          <thead>
+            <tr>
+              <td>Company Name</td>
+              <td>Main Contact Name</td>
+              <td>Website</td>
+              <td>Activity</td>
+              {active && <td>Archive</td>}
+            </tr>
+          </thead>
+          <tbody>
+            {companyList.map((company, idx) => (
               <tr key={idx}>
                 <td>{company.name}</td>
                 <td>{company.recruiterName || 'none'}</td>
@@ -52,7 +54,9 @@ const Companies = ({companies, active}) => {
                   <a href={company.website}>{company.website}</a>
                 </td>
                 <td>
-                  <Link to={`activity/${company.id}`}>View Activity</Link>
+                  <Link className="activity-link" to={`activity/${company.id}`}>
+                    View Activity
+                  </Link>
                 </td>
                 {active && (
                   <td>
@@ -63,8 +67,11 @@ const Companies = ({companies, active}) => {
                 )}
               </tr>
             ))}
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      ) : (
+        <h4>No Companies Available</h4>
+      )}
       {active && (
         <Link to="/company/add" className="add-new">
           Add A Company

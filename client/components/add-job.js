@@ -10,15 +10,17 @@ const AddJob = () => {
       input => (jobDetails[input.name] = input.value)
     )
     try {
-      await axios.post('/api/companies', jobDetails)
-      await history.push('/companies')
+      await axios.post('/api/companies', jobDetails).then(res => {
+        const companyId = res.data.id
+        history.push(`/activity/${companyId}`)
+      })
     } catch (err) {
       console.error(err)
     }
   }
 
   return (
-    <div>
+    <div className="add">
       <h3>Add A New Job</h3>
       <form onSubmit={addNewJob} name="newjob">
         <div>
@@ -45,7 +47,7 @@ const AddJob = () => {
           <label htmlFor="recruiterPhone">Recruiter Phone</label>
           <input name="recruiterPhone" type="text" />
         </div>
-        <button>Submit</button>
+        <button>Add Company</button>
       </form>
     </div>
   )
