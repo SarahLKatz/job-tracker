@@ -36,7 +36,7 @@
   "dependencies": {
     "@emotion/babel-preset-css-prop": "^10.0.9",
     "@emotion/core": "^10.0.9",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "compression": "^1.7.3",
     "connect-session-sequelize": "^6.0.0",
     "express": "^4.17.1",
