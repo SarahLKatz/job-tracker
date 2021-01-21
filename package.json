@@ -52,7 +52,7 @@
     "react-dom": "^16.4.2",
     "react-router-dom": "^5.0.0",
     "sequelize": "^5.8.7",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
